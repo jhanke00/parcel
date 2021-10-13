@@ -22,6 +22,13 @@ export const DEFAULT_OPTIONS: ParcelOptions = {
   targets: undefined,
   projectRoot: __dirname,
   shouldAutoInstall: false,
+  defaultConfig:
+    process.env.PARCEL_TEST_EXPERIMENTAL_BUNDLER == null
+      ? '@parcel/config-default'
+      : path.join(
+          require.resolve('@parcel/integration-tests'),
+          'experimental-bundler-config.json',
+        ),
   hmrOptions: undefined,
   shouldContentHash: true,
   shouldBuildLazily: false,
